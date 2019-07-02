@@ -26,6 +26,7 @@ class LikeController extends ActiveController
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
             'class' => HttpBearerAuth::class,
+            'only' => ['create', 'update', 'delete'],
         ];
         return $behaviors;
     }

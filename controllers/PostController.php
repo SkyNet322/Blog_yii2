@@ -3,17 +3,13 @@
 
 namespace app\controllers;
 
-use app\models\Like;
 use app\models\Tags;
 use app\models\TagsPosts;
-use app\models\User;
 use Yii;
-use yii\data\ActiveDataProvider;
-use yii\filters\AccessControl;
+use yii\data\ActiveDataProvider;;
 use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController;
 use app\models\Posts;
-use yii\web\NotFoundHttpException;
 use yii\web\ServerErrorHttpException;
 
 class PostController extends ActiveController
@@ -29,6 +25,7 @@ class PostController extends ActiveController
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
             'class' => HttpBearerAuth::class,
+            'only' => ['create', 'update', 'delete'],
         ];
         return $behaviors;
     }

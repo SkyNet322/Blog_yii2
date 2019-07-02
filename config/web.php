@@ -64,6 +64,9 @@ $config = [
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'post'],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'account'],
             ],
         ],
 

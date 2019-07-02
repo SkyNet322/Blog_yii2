@@ -14,6 +14,7 @@ use yii\web\IdentityInterface;
  * @property string $email
  * @property string $pass
  * @property string $login
+ * @property string $id
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -49,25 +50,6 @@ class User extends ActiveRecord implements IdentityInterface
             'email' => 'Email',
         ];
     }
-
-    public function getPosts(){
-        return $this->hasMany(Posts::class,
-        ['user_id' => 'id']
-        );
-    }
-
-    public function getToken(){
-        return $this->hasMany(Token::class,
-            ['user_id' => 'id']
-        );
-    }
-
-    public function getLike(){
-        return $this->hasMany(Like::class,
-            ['user_id' => 'id']
-        );
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -90,16 +72,6 @@ class User extends ActiveRecord implements IdentityInterface
 //        return null;
 //    }
 
-    public static function findIdentityByAccessToken($token, $type = null)
-    {
-        return User::find()
-            ->joinWith('token')
-            ->where(['token.access_token' => $token])
-            ->one();
-//        return static::findOne(['access_token' => $token]);
-
-
-    }
 
 //    public function login(){
 //        if($this->validate()) {
@@ -173,8 +145,38 @@ class User extends ActiveRecord implements IdentityInterface
 
     }
 
+    public function getPosts(){
+        return $this->hasMany(Posts::class,
+            ['user_id' => 'id']
+        );
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        return User::find()
+            ->joinWith('token')
+            ->where(['token.access_token' => $token])
+            ->one();
+    }
+
+    public function getToken(){
+        return $this->hasMany(Token::class,
+            ['user_id' => 'id']
+        );
+    }
+
+    public function getLike(){
+        return $this->hasMany(Like::class,
+            ['user_id' => 'id']
+        );
+    }
+
+    public function getSubscriptions(){
+        return $this->hasMany(Subscription::class, ['user_id' => 'id']);
+    }
+
     public function fields()
     {
-        return ['id', 'login', 'email'];
+        return ['id', 'login', 'email', 'subscriptions'];
     }
 }
