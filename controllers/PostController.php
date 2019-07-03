@@ -3,6 +3,7 @@
 
 namespace app\controllers;
 
+use app\models\Subscription;
 use app\models\Tags;
 use app\models\TagsPosts;
 use Yii;

@@ -13,6 +13,7 @@ use app\models\Subscription;
 use app\models\User;
 use http\Exception;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController;
 use yii\web\NotFoundHttpException;
@@ -37,15 +38,36 @@ class SubscriptionController extends ActiveController
     public function actions()
     {
         $actions = parent::actions();
+        unset($actions['index']);
         unset($actions['create']);
         unset($actions['delete']);
         return $actions;
     }
 
     /**
-     * @return Subscription
+     * @return ActiveDataProvider
      * @throws \yii\base\InvalidConfigException
      * @throws NotFoundHttpException
+     */
+
+    public function actionIndex()
+    {
+        $user_id = Yii::$app->user->identity->id;
+
+        $activeData = new ActiveDataProvider([
+            'query' => Subscription::find()->where(['user_id' => $user_id]),
+            'pagination' => [
+                'defaultPageSize' => 5,
+            ],
+        ]);
+
+        return $activeData;
+    }
+
+    /**
+     * @return Subscription
+     * @throws NotFoundHttpException
+     * @throws \yii\base\InvalidConfigException
      */
     public function actionCreate()
     {

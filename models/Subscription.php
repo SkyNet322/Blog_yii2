@@ -8,6 +8,7 @@ use Yii;
  * This is the model class for table "subscriptions".
  *
  * @property int $user_id
+ * @property int id
  * @property int $subscription_id
  *
  * @property User $user
@@ -52,5 +53,17 @@ class Subscription extends \yii\db\ActiveRecord
     public function getUser()
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
+    }
+
+    public function getPost(){
+        return $this->hasMany(Posts::class,
+            [
+                'user_id' => 'user_id'
+            ]);
+    }
+
+    public function fields()
+    {
+        return ['subscription_id'];
     }
 }

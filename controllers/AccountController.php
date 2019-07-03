@@ -9,7 +9,9 @@
 namespace app\controllers;
 
 
+use app\models\Like;
 use app\models\Posts;
+use app\models\Subscription;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\auth\HttpBearerAuth;
@@ -54,5 +56,24 @@ class AccountController extends ActiveController
         ]);
 
         return $activeData;
+    }
+
+    public function actionLike()
+    {
+        $user_id = Yii::$app->user->identity->id;
+
+        $activeLike = new ActiveDataProvider([
+            'query' => Posts::find()
+                ->where([
+                    'IN',
+                    'id',
+                    Like::find()
+                        ->select('post_id')
+                        ->where(['user_id' => $user_id])
+                        ->asArray()
+                ])
+        ]);
+
+        return $activeLike;
     }
 }

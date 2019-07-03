@@ -18,6 +18,9 @@ use yii\db\ActiveRecord;
  */
 class Posts extends ActiveRecord
 {
+
+    const STATUS_ACTIVE = 1;
+
     /**
      * {@inheritdoc}
      */
@@ -69,6 +72,13 @@ class Posts extends ActiveRecord
         return $this->hasMany(Like::class,
             ['post_id' => 'id'])
             ->count();
+    }
+
+    public function getSubscribe(){
+        return $this->hasMany(Subscription::class,
+            [
+                'user_id' => 'user_id'
+            ]);
     }
 
     public function fields()
