@@ -4,7 +4,6 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Posts;
 
 /**
  * PostSearch represents the model behind the search form of `\app\models\Posts`.
@@ -45,10 +44,13 @@ class PostSearch extends Posts
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
-            'query' => Posts::find(),
+            'query' => $query,
+            'pagination' => [
+                'defaultPageSize' => 5,
+            ],
         ]);
-
         $this->load($params);
+
 
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
@@ -65,7 +67,8 @@ class PostSearch extends Posts
         $query->andFilterWhere(['ilike', 'author', $this->author])
             ->andFilterWhere(['ilike', 'title', $this->title])
             ->andFilterWhere(['ilike', 'content', $this->content])
-            ->andFilterWhere(['ilike', 'tag', $this->tag]);
+            ->andFilterWhere(['ilike', 'tag', $this->tags]);
+
 
         return $dataProvider;
     }

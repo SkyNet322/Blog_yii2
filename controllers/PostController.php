@@ -3,7 +3,7 @@
 
 namespace app\controllers;
 
-use app\models\Subscription;
+use app\models\PostSearch;
 use app\models\Tags;
 use app\models\TagsPosts;
 use Yii;
@@ -31,24 +31,19 @@ class PostController extends ActiveController
         return $behaviors;
     }
 
-    public function actions()
-    {
+    public function actions() {
+
         $actions = parent::actions();
         unset($actions['create']);
-        unset($actions['index']);
+        $actions['index']['prepareDataProvider'] = [$this, 'prepareDataProvider'];
+
         return $actions;
     }
 
+    public function prepareDataProvider() {
 
-    public function actionIndex(){
-        $activeData = new ActiveDataProvider([
-            'query' => Posts::find(),
-            'pagination' => [
-                'defaultPageSize' => 5,
-            ],
-        ]);
-
-        return $activeData;
+        $searchModel = new PostSearch();
+        return $searchModel->search(\Yii::$app->request->queryParams);
     }
 
     /**
