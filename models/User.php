@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Yii;
 use yii\base\Exception;
 use yii\base\Security;
 use yii\db\ActiveRecord;
@@ -16,9 +15,10 @@ use yii\web\IdentityInterface;
  * @property string $login
  * @property string $id
  */
+
+
 class User extends ActiveRecord implements IdentityInterface
 {
-
     /** @var Security $security */
     public $security;
 

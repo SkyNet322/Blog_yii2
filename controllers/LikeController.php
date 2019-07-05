@@ -31,12 +31,13 @@ class LikeController extends ActiveController
         return $behaviors;
     }
 
-    public function actions()
-    {
-        $actions = parent::actions();
-        unset($actions['create']);
-        return $actions;
-    }
+    /**
+     * @OA\Get(
+     *     path="/like/create",
+     *     @OA\Response(response="200", description="An example resource"),
+     *     security={{"api_key":{}}}
+     * )
+     */
 
     /**
      * @return Like

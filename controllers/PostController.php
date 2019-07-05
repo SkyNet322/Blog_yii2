@@ -7,7 +7,6 @@ use app\models\PostSearch;
 use app\models\Tags;
 use app\models\TagsPosts;
 use Yii;
-use yii\data\ActiveDataProvider;;
 use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController;
 use app\models\Posts;
@@ -15,6 +14,14 @@ use yii\web\ServerErrorHttpException;
 
 class PostController extends ActiveController
 {
+
+    /**
+     * @OA\Get(
+     *     path="/posts",
+     *     @OA\Response(response="200", description="All posts"),
+     * )
+     */
+
     public $modelClass= Posts::class;
     public $serializer = [
         'class' => 'yii\rest\Serializer',
@@ -31,6 +38,13 @@ class PostController extends ActiveController
         return $behaviors;
     }
 
+    /**
+     * @OA\Get(
+     *     path="/posts/{id}",
+     *     @OA\Response(response="200", description="Detail posts"),
+     * )
+     */
+
     public function actions() {
 
         $actions = parent::actions();
@@ -45,6 +59,14 @@ class PostController extends ActiveController
         $searchModel = new PostSearch();
         return $searchModel->search(\Yii::$app->request->queryParams);
     }
+
+    /**
+     * @OA\Post(
+     *     path="/posts",
+     *     @OA\Response(response="200", description="New posts"),
+     *     security={{"api_key":{}}}
+     * )
+     */
 
     /**
      * @return Posts
@@ -69,6 +91,14 @@ class PostController extends ActiveController
 
         return $model;
     }
+
+    /**
+     * @OA\Post(
+     *     path="/posts/tag",
+     *     @OA\Response(response="200", description="Add tag to posts"),
+     *     security={{"api_key":{}}}
+     * )
+     */
 
     /**
      * @throws \yii\base\InvalidConfigException

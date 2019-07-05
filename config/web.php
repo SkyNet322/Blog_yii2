@@ -48,25 +48,28 @@ $config = [
         ],
         'db' => $db,
 
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'enableStrictParsing' => false,
             'showScriptName' => false,
             'rules' => [
-                'POST auth' => 'auth/register',
-                'GET auth' => 'auth/login',
-                'POST posts' => 'post/create',
-                'POST tags' => 'post/tag',
-                'POST like' => 'like',
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'user'],
                 [
                     'class' => 'yii\rest\UrlRule',
-                    'controller' => 'post'],
+                    'controller' => 'post',
+                    'extraPatterns' => [
+                        'POST tag' => 'tag',
+                    ]
+                ],
                 [
                     'class' => 'yii\rest\UrlRule',
                     'controller' => 'account'],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'subscription'],
             ],
         ],
 

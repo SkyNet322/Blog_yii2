@@ -40,7 +40,6 @@ class SubscriptionController extends ActiveController
         $actions = parent::actions();
         unset($actions['index']);
         unset($actions['create']);
-        unset($actions['delete']);
         return $actions;
     }
 
@@ -48,6 +47,14 @@ class SubscriptionController extends ActiveController
      * @return ActiveDataProvider
      * @throws \yii\base\InvalidConfigException
      * @throws NotFoundHttpException
+     */
+
+    /**
+     * @OA\Get(
+     *     path="/subscription",
+     *     @OA\Response(response="200", description="An example resource"),
+     *     security={{"api_key":{}}}
+     * )
      */
 
     public function actionIndex()
@@ -63,6 +70,14 @@ class SubscriptionController extends ActiveController
 
         return $activeData;
     }
+
+    /**
+     * @OA\Post(
+     *     path="/subscription/create",
+     *     @OA\Response(response="200", description="An example resource"),
+     *     security={{"api_key":{}}}
+     * )
+     */
 
     /**
      * @return Subscription
@@ -88,14 +103,4 @@ class SubscriptionController extends ActiveController
      * @throws \yii\base\InvalidConfigException
      * @throws \yii\db\StaleObjectException
      */
-    public function actionDelete()
-    {
-        $model = new Subscription();
-        $model->load(Yii::$app->getRequest()->getBodyParams(), '');
-        $model->delete();
-
-        return $model;
-    }
-
-
 }

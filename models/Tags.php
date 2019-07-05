@@ -27,6 +27,7 @@ class Tags extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['tag'], 'required'],
             [['tag'], 'string', 'max' => 255],
         ];
     }

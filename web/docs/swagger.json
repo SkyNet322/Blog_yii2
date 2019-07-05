@@ -1,0 +1,164 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "BlogYii2 API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/account": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/account/like": {
+            "get": {
+                "operationId": "app\\controllers\\AccountController::actionLike",
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/auth/register": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/like/create": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/posts": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "All posts"
+                    }
+                }
+            },
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "New posts"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/posts/{id}": {
+            "get": {
+                "operationId": "app\\controllers\\PostController::actions",
+                "responses": {
+                    "200": {
+                        "description": "Detail posts"
+                    }
+                }
+            }
+        },
+        "/posts/tag": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "Add tag to posts"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/subscription": {
+            "get": {
+                "operationId": "app\\controllers\\SubscriptionController::actionIndex",
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
+        "/subscription/create": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "An example resource"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "responses": {
+            "account": {
+                "description": "an \"unexpected\" error"
+            }
+        },
+        "securitySchemes": {
+            "api_key": {
+                "type": "http",
+                "name": "Authorization",
+                "in": "header",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

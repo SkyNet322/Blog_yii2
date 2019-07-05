@@ -1,5 +1,19 @@
 <?php
 
+/**
+ * @OA\Info(title="BlogYii2 API", version="0.1")
+ */
+
+/**
+ * @OA\SecurityScheme(
+ *         scheme="bearer",
+ *         type="http",
+ *         name="Authorization",
+ *         in="header",
+ *         securityScheme="api_key"
+ *     )
+ */
+
 // comment out the following two lines when deployed to production
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'dev');

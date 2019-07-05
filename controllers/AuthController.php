@@ -6,13 +6,19 @@ namespace app\controllers;
 use app\models\Token;
 use Yii;
 use app\models\User;
-use yii\db\Exception;
 use yii\rest\Controller;
 use yii\web\HttpException;
-use yii\web\NotFoundHttpException;
+
 
 class AuthController extends Controller
 {
+
+    /**
+     * @OA\Post(
+     *     path="/auth/register",
+     *     @OA\Response(response="200", description="An example resource"),
+     * )
+     */
 
     /**
      * @return User
@@ -31,6 +37,14 @@ class AuthController extends Controller
 
         return $model;
     }
+
+    /**
+     * @OA\Get(
+     *     path="/auth/login",
+     *     @OA\Response(response="200", description="An example resource"),
+     *     security={{"api_key":{}}}
+     * )
+     */
 
     /**
      * @return Token

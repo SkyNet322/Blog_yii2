@@ -42,6 +42,14 @@ class AccountController extends ActiveController
     }
 
     /**
+     * @OA\Get(
+     *     path="/account",
+     *     @OA\Response(response="200", description="An example resource"),
+     *     security={{"api_key":{}}}
+     * )
+     */
+
+    /**
      * @return ActiveDataProvider
      */
     public function actionIndex()
@@ -57,6 +65,18 @@ class AccountController extends ActiveController
 
         return $activeData;
     }
+
+    /**
+     * @OA\Get(
+     *     path="/account/like",
+     *     @OA\Response(response="200", description="An example resource"),
+     *     security={{"api_key":{}}}
+     * )
+     * @OA\Response(
+     *     response="account",
+     *     description="an ""unexpected"" error"
+     *   )
+     */
 
     public function actionLike()
     {

@@ -4,17 +4,29 @@ namespace app\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\Response;
-use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
+/**
+ * @SWG\Swagger(
+ *     basePath="/",
+ *     produces={"application/json"},
+ *     consumes={"application/x-www-form-urlencoded"},
+ *     @SWG\Info(version="1.0", title="Simple API"),
+ * )
+ */
+
 class SiteController extends Controller
 {
+
     /**
      * {@inheritdoc}
      */
+
     public function behaviors()
     {
         return [
@@ -48,9 +60,6 @@ class SiteController extends Controller
         ];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function actions()
     {
         return [

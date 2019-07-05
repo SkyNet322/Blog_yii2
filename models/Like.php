@@ -31,6 +31,7 @@ class Like extends \yii\db\ActiveRecord
         return [
             [['post_id', 'user_id'], 'default', 'value' => null],
             [['post_id', 'user_id'], 'integer'],
+            [['post_id', 'user_id'], 'required'],
             [['post_id'], 'exist', 'skipOnError' => true, 'targetClass' => Posts::class, 'targetAttribute' => ['post_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
