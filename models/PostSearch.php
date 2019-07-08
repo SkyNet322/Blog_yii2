@@ -67,8 +67,11 @@ class PostSearch extends Posts
         $query->andFilterWhere(['ilike', 'author', $this->author])
             ->andFilterWhere(['ilike', 'title', $this->title])
             ->andFilterWhere(['ilike', 'content', $this->content]);
-//            ->andFilterWhere(['ilike', 'tags', $this->tag]);
 
+        if (isset($params['tags']) && $params['tags']) {
+            $query->joinWith('tags')
+                ->andWhere(['IN', 'tags.id', $params['tags']]);
+        }
 
         return $dataProvider;
     }
