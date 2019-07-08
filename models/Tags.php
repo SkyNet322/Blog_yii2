@@ -4,6 +4,8 @@ namespace app\models;
 
 use phpDocumentor\Reflection\DocBlock\Tag;
 use Yii;
+use yii\db\ActiveRecord;
+use app\controllers\TagController;
 
 /**
  * This is the model class for table "tags".
@@ -11,7 +13,7 @@ use Yii;
  * @property int $id
  * @property string $tag
  */
-class Tags extends \yii\db\ActiveRecord
+class Tags extends ActiveRecord
 {
     /**
      * {@inheritdoc}
@@ -39,7 +41,7 @@ class Tags extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'tag' => 'Tag',
+            'tag' => 'Tags',
         ];
     }
 

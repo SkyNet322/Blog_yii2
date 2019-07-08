@@ -16,8 +16,22 @@ use yii\db\ActiveRecord;
  * @property string $data_create
  * @property string $tag
  */
+
+/**
+ * @OA\Schema()
+ */
+
 class Posts extends ActiveRecord
 {
+    /**
+     * The posts name
+     * @var string
+     * @OA\Property(
+     *   property="title",
+     *   type="string",
+     *   description="The Posts title"
+     * )
+     */
 
     const STATUS_ACTIVE = 1;
 

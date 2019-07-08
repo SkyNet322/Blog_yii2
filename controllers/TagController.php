@@ -10,6 +10,7 @@ namespace app\controllers;
 
 
 use app\models\Tags;
+use Yii;
 use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController;
 
@@ -25,5 +26,19 @@ class TagController extends ActiveController
             'only' => ['create', 'update', 'delete'],
         ];
         return $behaviors;
+    }
+
+    /**
+     * @return Tags
+     * @throws \yii\base\InvalidConfigException
+     */
+
+    public function actionTag()
+    {
+        $tags = new Tags();
+        $tags->load(Yii::$app->getRequest()->getBodyParams(), '');
+        $tags->save();
+
+        return $tags;
     }
 }

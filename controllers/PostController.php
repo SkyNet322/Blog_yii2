@@ -12,12 +12,15 @@ use yii\rest\ActiveController;
 use app\models\Posts;
 use yii\web\ServerErrorHttpException;
 
+
+
 class PostController extends ActiveController
 {
 
     /**
      * @OA\Get(
      *     path="/posts",
+     *     tags={"post"},
      *     @OA\Response(response="200", description="All posts"),
      * )
      */
@@ -41,6 +44,7 @@ class PostController extends ActiveController
     /**
      * @OA\Get(
      *     path="/posts/{id}",
+     *     tags={"post"},
      *     @OA\Response(response="200", description="Detail posts"),
      * )
      */
@@ -63,6 +67,7 @@ class PostController extends ActiveController
     /**
      * @OA\Post(
      *     path="/posts",
+     *     tags={"post"},
      *     @OA\Response(response="200", description="New posts"),
      *     security={{"api_key":{}}}
      * )
@@ -93,22 +98,6 @@ class PostController extends ActiveController
     }
 
     /**
-     * @OA\Post(
-     *     path="/posts/tag",
-     *     @OA\Response(response="200", description="Add tag to posts"),
-     *     security={{"api_key":{}}}
-     * )
-     */
-
-    /**
      * @throws \yii\base\InvalidConfigException
      */
-    public function actionTag()
-    {
-        $tags = new Tags();
-        $tags->load(Yii::$app->getRequest()->getBodyParams(), '');
-        $tags->save();
-
-        return $tags;
-    }
 }

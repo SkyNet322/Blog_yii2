@@ -52,6 +52,7 @@ class SubscriptionController extends ActiveController
     /**
      * @OA\Get(
      *     path="/subscription",
+     *     tags={"subscription"},
      *     @OA\Response(response="200", description="An example resource"),
      *     security={{"api_key":{}}}
      * )
@@ -74,6 +75,7 @@ class SubscriptionController extends ActiveController
     /**
      * @OA\Post(
      *     path="/subscription/create",
+     *     tags={"subscription"},
      *     @OA\Response(response="200", description="An example resource"),
      *     security={{"api_key":{}}}
      * )
@@ -96,11 +98,4 @@ class SubscriptionController extends ActiveController
 
         return $model;
     }
-
-    /**
-     * @return Subscription
-     * @throws \Throwable
-     * @throws \yii\base\InvalidConfigException
-     * @throws \yii\db\StaleObjectException
-     */
 }

@@ -44,6 +44,7 @@ class AccountController extends ActiveController
     /**
      * @OA\Get(
      *     path="/account",
+     *     tags={"account"},
      *     @OA\Response(response="200", description="An example resource"),
      *     security={{"api_key":{}}}
      * )
@@ -69,13 +70,10 @@ class AccountController extends ActiveController
     /**
      * @OA\Get(
      *     path="/account/like",
+     *     tags={"account"},
      *     @OA\Response(response="200", description="An example resource"),
      *     security={{"api_key":{}}}
      * )
-     * @OA\Response(
-     *     response="account",
-     *     description="an ""unexpected"" error"
-     *   )
      */
 
     public function actionLike()

@@ -33,7 +33,8 @@ class LikeController extends ActiveController
 
     /**
      * @OA\Get(
-     *     path="/like/create",
+     *     path="/like",
+     *     tags={"like"},
      *     @OA\Response(response="200", description="An example resource"),
      *     security={{"api_key":{}}}
      * )

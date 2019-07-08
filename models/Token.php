@@ -10,7 +10,7 @@ use Yii;
  * @property int $id
  * @property string $access_token
  *
- * @property Users[] $users
+ * @property User[] $users
  * @property mixed user_id
  */
 class Token extends \yii\db\ActiveRecord

@@ -16,6 +16,7 @@ class AuthController extends Controller
     /**
      * @OA\Post(
      *     path="/auth/register",
+     *     tags={"auth"},
      *     @OA\Response(response="200", description="An example resource"),
      * )
      */
@@ -41,6 +42,7 @@ class AuthController extends Controller
     /**
      * @OA\Get(
      *     path="/auth/login",
+     *     tags={"auth"},
      *     @OA\Response(response="200", description="An example resource"),
      *     security={{"api_key":{}}}
      * )

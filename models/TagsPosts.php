@@ -42,7 +42,7 @@ class TagsPosts extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'tag_id' => 'Tag ID',
+            'tag_id' => 'Tags ID',
             'post_id' => 'Post ID',
         ];
     }

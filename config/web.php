@@ -59,6 +59,12 @@ $config = [
                     'controller' => 'user'],
                 [
                     'class' => 'yii\rest\UrlRule',
+                    'controller' => 'tag'],
+                [
+                    'class' => 'yii\rest\UrlRule',
+                    'controller' => 'like'],
+                [
+                    'class' => 'yii\rest\UrlRule',
                     'controller' => 'post',
                     'extraPatterns' => [
                         'POST tag' => 'tag',
